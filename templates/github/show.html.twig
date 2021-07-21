@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Github{% endblock %}
+
+{% block body %}
+    <h1>Github</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ github.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ github.username }}</td>
+            </tr>
+            <tr>
+                <th>RepoName</th>
+                <td>{{ github.repoName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('github_index') }}">back to list</a>
+
+    <a href="{{ path('github_edit', {'id': github.id}) }}">edit</a>
+
+    {{ include('github/_delete_form.html.twig') }}
+{% endblock %}

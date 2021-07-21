@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Github{% endblock %}
+
+{% block body %}
+    <h1>Edit Github</h1>
+
+    {{ include('github/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('github_index') }}">back to list</a>
+
+    {{ include('github/_delete_form.html.twig') }}
+{% endblock %}
