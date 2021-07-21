@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url('../fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('../fonts/Poppins-Medium.ttf');
+}
+
+
+$text-font: 'OpenSans-Light', sans-serif;
+
+$title-font: 'Poppins-Medium', sans-serif;

@@ -2,31 +2,47 @@
 
 namespace App\Controller;
 
+use App\Repository\CompetenceRepository;
 use App\Repository\GithubRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/accueil", name="home")
+     * @Route("/", name="home")
      */
-    public function index(GithubRepository $githubRepository): Response
+    public function index(CompetenceRepository $competenceRepository): Response
     {
-        $allRepos = $githubRepository->findAll();
-        $repoNames = array_map(function (\App\Entity\Github $repo) {
-            return $repo->getRepoName();
-        }, $allRepos);
+        $myData = [
+            "avatar_url" => 'test',
+            "login" => 'test',
+            "html_url" => 'test',
+            "public_repos" => 'test',
+            "public_gists" => 'test',
+        ];
+        $client = HttpClient::create();
+        $username = 'RedPandore';
+        // find username url in github api
+        $url = 'https://api.github.com/users/' . $username;
+       /* $response = $client->request(
+            'GET',
+            $url,
+            [],
+            [],
+            ['HTTP_ACCEPT' => 'application/vnd.github.v3+json']
+ );
+        $data = json_decode($response->getContent(), true);
+        $Mydata = $data*/
 
-        // get username from repoNames
-        $user = array_unique(array_map(function ($repoName) {
-            return substr($repoName, 0, strpos($repoName, '/'));
-        }, $repoNames));
 
+        $allCompetences = $competenceRepository->findAll();
         return $this->render('home/index.html.twig', [
-            'repoNames' => $repoNames,
-            'allRepos' => $allRepos,
+            'competences' => $allCompetences,
+            'username' => $username,
+            'myData' => $myData,
         ]);
     }
 }
