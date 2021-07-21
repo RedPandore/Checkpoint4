@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Github{% endblock %}
+
+{% block body %}
+    <h1>Create new Github</h1>
+
+    {{ include('github/_form.html.twig') }}
+
+    <a href="{{ path('github_index') }}">back to list</a>
+{% endblock %}

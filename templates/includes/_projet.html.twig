@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 center-col margin-40px-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center">
+            <h2>Mes projets</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for repos in allRepos %}
+            <div class="col-lg-3 col-md-6 col-sm-12 m-3">
+                <a href="https://github.com/{{ repos.username }}/{{ repos.repoName}}"><img src="https://gh-card.dev/repos/{{ repos.username }}/{{ repos.repoName}}.png"></a>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
