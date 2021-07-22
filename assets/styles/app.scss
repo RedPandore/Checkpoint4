@@ -1,13 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'variables';
-
+.navbar {
+    color: rgb(146, 146, 146);
+    background-color: rgba(255, 255, 255, 0.2);
+    font-family: $text-font;
+    font-size: 1.5em;
+    .Nom {
+        font-family: $special-font;
+        font-size: 2em;
+        margin-right: 10vw;
+    }
+}
+footer {
+    color: rgb(146, 146, 146);
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: url('https://transparenttextures.com/patterns/dark-denim-3.png');
+    font-family: $text-font;
+}
 body {
     margin: 0;
     padding: 0;
     font-family: $text-font;
     color: rgb(146, 146, 146);
     background-color: rgb(36, 36, 36);
-    background-image: url("https://transparenttextures.com/patterns/dark-denim-3.png");
+    background-image: url('https://transparenttextures.com/patterns/dark-denim-3.png');
     .title {
         font-family: $title-font;
         font-size: 2.5em;
@@ -15,9 +31,9 @@ body {
     //section profile
     .profile {
         margin-top: 2.5%;
-        .card{
+        .card {
             background-color: rgb(29, 29, 29);
-            background-image: url("https://transparenttextures.com/patterns/dark-denim-3.png");
+            background-image: url('https://transparenttextures.com/patterns/dark-denim-3.png');
         }
     }
     //section competence
@@ -45,6 +61,31 @@ body {
     //section projet
     .projets {
         margin-top: 2.5%;
+        figure {
+            background-color: rgb(29, 29, 29);
+            background-image: url('https://transparenttextures.com/patterns/dark-denim-3.png');
+        }
+        figcaption {
+            background-color: rgb(29, 29, 29);
+            background-image: url('https://transparenttextures.com/patterns/dark-denim-3.png');
+        }
+        .outline-card {
+            text-decoration: none;
+            color: rgb(146, 146, 146);
+            .card {
+                background: rgba(255, 255, 255, 0.2);
+                text-decoration: none;
+                color: rgb(146, 146, 146);
+                .card-title {
+                    text-decoration: none;
+                }
+                .language {
+                    font-weight: bolder;
+                }
+            }
+        }
     }
-   
+}
+table{
+    color: white;
 }

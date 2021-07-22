@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\Projet;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProjetType extends AbstractType
 {
@@ -15,10 +16,18 @@ class ProjetType extends AbstractType
         $builder
             ->add('name')
             ->add('url')
-            ->add('image', FileType::class)
+            ->add(
+                'imageFile',
+                VichFileType::class,
+                [
+                    'required'      => false,
+                    'allow_delete'  => true, // not mandatory, default is true
+                    'download_uri' => true, // not mandatory, default is true
+                    'label' => 'Projet image',
+                ]
+            )
             ->add('language')
-            ->add('description')
-        ;
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver)

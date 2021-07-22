@@ -5,15 +5,18 @@ namespace App\Controller;
 use App\Entity\Projet;
 use App\Form\ProjetType;
 use App\Repository\ProjetRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/projet")
+ * @IsGranted("ROLE_ADMIN")
  */
 class ProjetController extends AbstractController
 {
@@ -30,7 +33,7 @@ class ProjetController extends AbstractController
     /**
      * @Route("/new", name="projet_new", methods={"GET","POST"})
      */
-    public function new(Request $request,  SluggerInterface $slugger): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $projet = new Projet();
         $form = $this->createForm(ProjetType::class, $projet);
@@ -38,38 +41,17 @@ class ProjetController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $brochureFile = $form->get('image')->getData();
+            $brochureFile = $form->get('imageFile')->getData();
 
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-            if ($brochureFile) {
-                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
-
-                // Move the file to the directory where brochures are stored
-                try {
-                    $brochureFile->move(
-                        $this->getParameter('brochures_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    'Error during upload';
-                }
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $projet->setImage($newFilename);
             }
-
-            // ... persist the $product variable or any other work
+            
 
             $entityManager->persist($projet);
             $entityManager->flush();
 
-            return $this->redirectToRoute('projet_index', [], Response::HTTP_SEE_OTHER);
-        }
+
+            return $this->redirectToRoute('projet_index');
+
 
         return $this->renderForm('projet/new.html.twig', [
             'projet' => $projet,

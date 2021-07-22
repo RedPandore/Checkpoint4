@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ProjetRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProjetRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
+ * @Vich\Uploadable
  */
 class Projet
 {
@@ -28,9 +32,25 @@ class Projet
     private $url;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $image;
+    private ?string $image = null;
+
+    /**
+     * @Vich\UploadableField(mapping="imageFile", fileNameProperty="image")
+     * @Assert\File(
+     *  maxSize="2M",
+     *  mimeTypes={
+     *      "image/jpeg",
+     *      "image/jpg",
+     *      "image/png",
+     *      "image/webp",
+     *      "image/svg"
+     *  }
+     * )
+     * @var File|null
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -105,5 +125,15 @@ class Projet
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
     }
 }

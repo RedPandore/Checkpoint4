@@ -1,14 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Competence index{% endblock %}
 
 {% block body %}
     <h1>Competence index</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="text-center">
                 <th>Nom</th>
                 <th>Logo</th>
                 <th>Other</th>
@@ -17,14 +16,13 @@
         </thead>
         <tbody>
         {% for competence in competences %}
-            <tr>
-                <td>{{ competence.id }}</td>
+            <tr class="text-center">
                 <td>{{ competence.nom }}</td>
-                <td>{{ competence.logo }}</td>
+                <td><i class="{{ competence.logo }}"></i></td>
                 <td>{{ competence.other ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('competence_show', {'id': competence.id}) }}">show</a>
-                    <a href="{{ path('competence_edit', {'id': competence.id}) }}">edit</a>
+                    <a href="{{ path('competence_show', {'id': competence.id}) }}" class="btn btn-primary">détail</a>
+                    <a href="{{ path('competence_edit', {'id': competence.id}) }}" class="btn btn-primary">éditer</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('competence_new') }}">Create new</a>
+    <a href="{{ path('competence_new') }}" class="btn btn-primary">Nouvelle</a>
 {% endblock %}

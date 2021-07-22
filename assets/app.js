@@ -10,6 +10,7 @@ import './styles/app.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+
 // start the Stimulus application
 import { Tooltip, Toast, Popover } from 'bootstrap';
 import './bootstrap';

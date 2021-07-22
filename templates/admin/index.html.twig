@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Salut
+    {{ app.user.username }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="list-group m-5">
+        <a href="{{ path('competence_index') }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Mes compétences</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Ici on gère les competences.</p>
+
+        </a>
+        <a href="{{ path('projet_index') }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Mes réalisations</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Pour gérer les réalisations c'est ici .</p>
+
+        </a>
+         <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Upload ton CV</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Tu click et tu envoi ton CV.</p>
+
+        </a>
+    </div>
+</div>
+{% endblock %}

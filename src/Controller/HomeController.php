@@ -17,16 +17,16 @@ class HomeController extends AbstractController
      */
     public function index(CompetenceRepository $competenceRepository, ProjetRepository $projetRepository): Response
     {
-        /*$myData = [
+        $myData = [
             "avatar_url" => 'test',
             "login" => 'test',
             "html_url" => 'test',
             "public_repos" => 'test',
             "public_gists" => 'test',
-        ];*/
+        ];
         $client = HttpClient::create();
         $username = 'RedPandore';
-        // find username url in github api
+
         $url = 'https://api.github.com/users/' . $username;
         $response = $client->request(
             'GET',
@@ -48,7 +48,7 @@ class HomeController extends AbstractController
         $allRepo = json_decode($response->getContent(), true);
 
         $allCompetences = $competenceRepository->findAll();
-
+     //  $allRepo = [];
         $allProjet = $projetRepository->findAll();
         return $this->render('home/index.html.twig', [
             'username' => $username,
