@@ -1,0 +1,12 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        imageFile:
+          uri_prefix: /images/projet
+          upload_destination: '%kernel.project_dir%/public/uploads/images'
+          namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        curriculumFile:
+          uri_prefix: /images/curriculum
+          upload_destination: '%kernel.project_dir%/public/uploads/curriculums'
+          namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

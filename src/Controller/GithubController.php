@@ -6,12 +6,14 @@ use App\Entity\Github;
 use App\Form\GithubType;
 use App\Repository\GithubRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/github")
+ * @IsGranted("ROLE_ADMIN")
  */
 class GithubController extends AbstractController
 {

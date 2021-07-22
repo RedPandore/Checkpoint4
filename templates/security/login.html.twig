@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid d-flex justify-content-center">
+        <form method="post" class="mb-5 col-4">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    Salut
+                    {{ app.user.username }}
+                    !<a href="{{ path('app_logout') }}">Déco</a>
+                </div>
+            {% endif %}
+
+            <h1 class="h3 mb-3 font-weight-normal text-center mt-4">Connecte toi</h1>
+            <label for="inputUsername" class="m-2">Pseudo</label>
+            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+            <label for="inputPassword" class="m-2">Mot de pass</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn btn-lg btn-primary mt-2" type="submit">
+                Connection
+            </button>
+        </form>
+    </div>
+{% endblock %}

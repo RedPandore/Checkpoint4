@@ -1,0 +1,11 @@
+@import '~bootstrap/scss/bootstrap';
+@import 'variables';
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $text-font;
+    color: rgb(146, 146, 146);
+    background-color: rgb(36, 36, 36);
+    background-image: url('https://transparenttextures.com/patterns/dark-denim-3.png');
+}
