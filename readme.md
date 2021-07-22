@@ -4,7 +4,7 @@
     Open with your code editor
     Run composer install to install PHP dependencies
     Run yarn install to install JS dependencies
-    Copy the .env file and fill all informations (Database, Symfony/Mailer, Open Route Service, Pole Emploi Variable)
+    Copy the .env file and fill all information
     Run symfony console doctrine:database:create to create database
     Run symfony console doctrine:migration:migrate to create structure of database
     Run symfony console doctrine:fixtures:load to load the fixtures in database
@@ -20,4 +20,3 @@ admin access :
     username : Tens
     password : 123456789
 
-    
