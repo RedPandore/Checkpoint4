@@ -21,13 +21,13 @@ class HomeController extends AbstractController
             "avatar_url" => 'test',
             "login" => 'test',
             "html_url" => 'test',
-            "public_repos" => 'test',
-            "public_gists" => 'test',
+            "public_repos" => '16',
+            "public_gists" => '11',
         ];
         $client = HttpClient::create();
         $username = 'RedPandore';
 
-        $url = 'https://api.github.com/users/' . $username;
+       $url = 'https://api.github.com/users/' . $username;
         $response = $client->request(
             'GET',
             $url,
@@ -48,7 +48,7 @@ class HomeController extends AbstractController
         $allRepo = json_decode($response->getContent(), true);
 
         $allCompetences = $competenceRepository->findAll();
-     //  $allRepo = [];
+     //$allRepo = [];
         $allProjet = $projetRepository->findAll();
         return $this->render('home/index.html.twig', [
             'username' => $username,
