@@ -42,15 +42,15 @@ class ProjetController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $brochureFile = $form->get('imageFile')->getData();
-
-            }
-            
-
             $entityManager->persist($projet);
             $entityManager->flush();
 
 
             return $this->redirectToRoute('projet_index');
+            }
+            
+
+           
 
 
         return $this->renderForm('projet/new.html.twig', [

@@ -50,7 +50,7 @@ Impression 3d, élèctronique, jardinnage*/
             'logo' => 'fab fa-wordpress',
             'other' => false
         ],
-        'jardinnage' =>  [
+        'jardinage' =>  [
             'language' => 'jardinnage',
             'logo' => 'fab fa-pagelines',
             'other' => true

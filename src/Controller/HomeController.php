@@ -23,7 +23,9 @@ class HomeController extends AbstractController
             "html_url" => 'test',
             "public_repos" => '16',
             "public_gists" => '11',
+            "name" => 'Tennessee Houry'
         ];
+        $allRepo = [ ];
         $client = HttpClient::create();
         $username = 'RedPandore';
 
@@ -48,7 +50,7 @@ class HomeController extends AbstractController
         $allRepo = json_decode($response->getContent(), true);
 
         $allCompetences = $competenceRepository->findAll();
-     //$allRepo = [];
+
         $allProjet = $projetRepository->findAll();
         return $this->render('home/index.html.twig', [
             'username' => $username,
