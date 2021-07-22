@@ -1,14 +1,63 @@
 {% block projets %}
-    <section class="projets">
+    <section class="projets" data-aos="fade-right" data-aos-delay="100">
         <div class="row">
             <div class="col-12 center-col margin-40px-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center">
-                <h2 class="title">Mes projets</h2>
+                <h2 class="title">Mes réalisations</h2>
             </div>
         </div>
         <div class="row">
-            <div class="d-flex justify-content-around">
+            {% for projet in projets %}
+                <div class="col-md-4 d-flex justify-content-arround ">
+                    <div class="card m-2" data-aos="fade-up" data-aos-delay="1{{ loop.index }}0">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <div class="card-header">
+                                {{ projet.name }}
+                            </div>
+                            <div class="card-body">
+                                <img src="{{ projet.image }}" class="img-fluid">
+                                <p class="card-text">{{ projet.description }}</p>
+                            </div>
+                        </button>
+                    </div>
 
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <img src="{{ projet.image }}" class="img-fluid">
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <a href="{{ projet.url }}" class="btn btn-secondary m-4">Lien du projet</a>
+                                    <button type="button" class="btn btn-secondary m-4" data-bs-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-12 center-col margin-40px-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center">
+                <h2 class="title">Mes projets github</h2>
             </div>
+        </div>
+        <div class="row">
+            {% for repo in repos %}
+                <div class="col-md-3 d-flex justify-content-arround ">
+                    <div class="card m-2 w-75" data-aos="fade-up" data-aos-delay="1{{ loop.index }}0">
+                        <div class="card-header">
+                            {{ repo.name }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ repo.description }}</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ repo.svn_url }}" class="btn btn-secondary m-4">Lien du projet</a>
+                            {{ repo.language }}
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}

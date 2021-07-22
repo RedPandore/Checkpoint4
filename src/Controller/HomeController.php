@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CompetenceRepository;
 use App\Repository\GithubRepository;
+use App\Repository\ProjetRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,35 +15,47 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(CompetenceRepository $competenceRepository): Response
+    public function index(CompetenceRepository $competenceRepository, ProjetRepository $projetRepository): Response
     {
-        $myData = [
+        /*$myData = [
             "avatar_url" => 'test',
             "login" => 'test',
             "html_url" => 'test',
             "public_repos" => 'test',
             "public_gists" => 'test',
-        ];
+        ];*/
         $client = HttpClient::create();
         $username = 'RedPandore';
         // find username url in github api
         $url = 'https://api.github.com/users/' . $username;
-       /* $response = $client->request(
+        $response = $client->request(
             'GET',
             $url,
             [],
             [],
             ['HTTP_ACCEPT' => 'application/vnd.github.v3+json']
- );
-        $data = json_decode($response->getContent(), true);
-        $Mydata = $data*/
+        );
+        $myData = json_decode($response->getContent(), true);
 
+        $repoUrl = $myData['repos_url'];
+        $response = $client->request(
+            'GET',
+            $repoUrl,
+            [],
+            [],
+            ['HTTP_ACCEPT' => 'application/vnd.github.v3+json']
+        );
+        $allRepo = json_decode($response->getContent(), true);
 
         $allCompetences = $competenceRepository->findAll();
+
+        $allProjet = $projetRepository->findAll();
         return $this->render('home/index.html.twig', [
-            'competences' => $allCompetences,
             'username' => $username,
             'myData' => $myData,
+            'competences' => $allCompetences,
+            'projets' => $allProjet,
+            'repos' => $allRepo,
         ]);
     }
 }

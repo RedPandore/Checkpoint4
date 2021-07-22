@@ -2,25 +2,29 @@
 
 namespace App\Form;
 
-use App\Entity\Competence;
+use App\Entity\Projet;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CompetenceType extends AbstractType
+class ProjetType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('logo')
+            ->add('name')
+            ->add('url')
+            ->add('image', FileType::class)
+            ->add('language')
+            ->add('description')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Competence::class,
+            'data_class' => Projet::class,
         ]);
     }
 }
