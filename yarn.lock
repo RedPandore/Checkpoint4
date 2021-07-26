@@ -2752,6 +2752,11 @@ inherits@2.0.3:
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
+install@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.13.0.tgz#6af6e9da9dd0987de2ab420f78e60d9c17260776"
+  integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
+
 internal-ip@^6.2.0:
   version "6.2.0"
   resolved "https://registry.npmjs.org/internal-ip/-/internal-ip-6.2.0.tgz"
@@ -3874,6 +3879,13 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
+progressbar.js@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/progressbar.js/-/progressbar.js-1.1.0.tgz#300f99be40ba93fb0867f91dff01771236cade70"
+  integrity sha512-K68/xcyXKo2I6T3PfIkXrRaycxROmWeU4bugb49iulWR25cU94PM0cfZ47S0jDhG5K3vPhZwCOy1fgb5Pgh6UQ==
+  dependencies:
+    shifty "^2.1.2"
+
 proxy-addr@~2.0.5:
   version "2.0.7"
   resolved "https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.7.tgz"
@@ -4308,6 +4320,11 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npmjs.org/shellwords/-/shellwords-0.1.1.tgz"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
+
+shifty@^2.1.2:
+  version "2.15.2"
+  resolved "https://registry.yarnpkg.com/shifty/-/shifty-2.15.2.tgz#be74f83b5494708ca5531c3725027a0b51d1dc3d"
+  integrity sha512-uaDIdYXrOGncvPula4Pi2jl7kv46IwvZ10AYBSGsl/vrvclOXqzMWOAQCgDjNR7LVPgQki0CTtOMJOH9gnJgsg==
 
 signal-exit@^3.0.3:
   version "3.0.3"

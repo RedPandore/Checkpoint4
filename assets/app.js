@@ -15,5 +15,4 @@ import 'aos/dist/aos.css';
 import { Tooltip, Toast, Popover } from 'bootstrap';
 import './bootstrap';
 
-
 AOS.init();

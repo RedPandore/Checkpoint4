@@ -26,7 +26,6 @@ class UserFixtures extends Fixture
                 ->passwordEncoder
                 ->encodePassword($user, '123456789')
         );
-        $user->setCurriculum('curriculum');
         $manager->persist($user);
         $manager->flush();
     }

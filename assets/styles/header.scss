@@ -1,0 +1,16 @@
+@import 'variables';
+
+.jumbotron{
+    margin: 0;
+    padding: 0;
+    background-image: url("https://cdn.designbump.com/wp-content/uploads/2013/06/mountain-photos-photography-inspiration-nature-scenes-016.jpg");
+    height : 75vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: $border;
+    .lead{
+        font-size: 4em;
+        background-color: black;
+    }
+}

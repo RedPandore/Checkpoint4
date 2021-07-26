@@ -1,7 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
+        {% block header %}
+            {% include "includes/_header.html.twig" %}
+        {% endblock %}
+
         {% block profil %}
             {% include "includes/_profil.html.twig" %}
         {% endblock %}
@@ -13,5 +16,4 @@
         {% block projets %}
             {% include "includes/_projet.html.twig" %}
         {% endblock %}
-    </div>
 {% endblock %}

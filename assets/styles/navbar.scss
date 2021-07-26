@@ -1,0 +1,16 @@
+@import 'variables';
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.651);
+    font-family: $text-font;
+    font-size: 1.2em;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.349);
+    .navlink {
+        color: rgb(197, 197, 197);
+    }
+    .Nom {
+        font-family: $special-font;
+        font-size: 2em;
+        margin-right: 10vw;
+    }
+}

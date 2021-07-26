@@ -5,14 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @Vich\Uploadable
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -38,28 +36,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
-     */
-    private $curriculum;
-
-    /**
-     * @Vich\UploadableField(mapping="curriculumFile", fileNameProperty="curriculum")
-     * @Assert\File(
-     *  maxSize="2M",
-     *  mimeTypes={
-     *      "image/jpeg",
-     *      "application/pdf",
-     *      "application/x-pdf",
-     *      "application/msword",
-     *      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-     *  }
-     * )
-     * @var File|null
-     */
-    private $curriculumFile;
 
     public function getId(): ?int
     {
@@ -145,25 +121,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getCurriculumFile(): ?File
-    {
-        return $this->curriculumFile;
-    }
-
-    public function setCurriculumFile(?File $curriculumFile = null): void
-    {
-        $this->curriculumFile = $curriculumFile;
-    }
-
-    public function getCurriculum()
-    {
-        return $this->curriculum;
-    }
-
-    public function setCurriculum(string $curriculum)
-    {
-        $this->curriculum = $curriculum;
-
-        return $this;
-    }
 }

@@ -26,6 +26,8 @@
     "dependencies": {
         "aos": "^3.0.0-beta.6",
         "copy-webpack-plugin": "^9.0.1",
-        "imagehover.css": "^2.0.0"
+        "imagehover.css": "^2.0.0",
+        "install": "^0.13.0",
+        "progressbar.js": "^1.1.0"
     }
 }

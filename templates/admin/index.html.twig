@@ -7,6 +7,12 @@
 {% block body %}
     <div class="container">
         <div class="list-group m-5">
+            <a href="{{ path('information_index') }}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Modifi ta déscription</h5>
+                </div>
+                <p class="mb-1">Tu gère ta déscription ici.</p>
+            </a>
             <a href="{{ path('competence_index') }}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">Mes compétences</h5>
@@ -19,12 +25,13 @@
                 </div>
                 <p class="mb-1">Pour gérer les réalisations c'est ici .</p>
             </a>
-            <a href="{{ path('user_edit' , {id: app.user.id}) }}") }}" class="list-group-item list-group-item-action">
+            <a href="{{ path('user_edit' , {id: app.user.id}) }}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">Upload ton CV</h5>
                 </div>
                 <p class="mb-1">Tu click et tu envoi ton CV.</p>
             </a>
+
         </div>
     </div>
 {% endblock %}

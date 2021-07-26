@@ -1,48 +1,38 @@
 {% block profil %}
     <section class="profile" id="profile">
-        <div class="d-flex justify-content-center">
-            <h1 class="align-center m-4 title ">
-                Profil
-            </h1>
-        </div>
-        <div class="content mt-4">
-            <div class="row d-flex justify-content-around">
-                <div class="col-md-7 aproposdemoi">
-                    <div class="d-flex">
-                        <div class="d-flex flex-wrap justify-content-center">
-                            <img src="{{ myData.avatar_url }}" class="rounded-circle mx-4" width="200" height="200"/>
-                            <div>
-                                <h4>{{ myData.name }}</h4>
-                                <p>
-                                    {{ myData.public_repos }}
-                                    Repos |
-                                    {{ myData.public_gists }}
-                                    Gists
-                                </p>
-                            </div>
-                            <a href="{{ myData.html_url }}" class="btn btn-outline-primary btn-sm m-1 p-2 fab fa-github btn-profil">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <h1 class="align-center title ">
+                    Profil
+                </h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-3">
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <img src="{{ myData.avatar_url }}" class="rounded-circle mx-4" width="200" height="200"/>
+                        <div>
+                            <h4>{{ myData.name }}</h4>
+                            <p>
+                                {{ myData.public_repos }}
+                                Repos |
+                                {{ myData.public_gists }}
+                                Gists
+                            </p>
+                        </div>
+                        <div>
+                            <a href="{{ myData.html_url }}" class="btn btn-outline-primary btn-sm m-1 p-3 fab fa-github btn-profil">
                                 Github</a>
-                            <a href="{{ myData.html_url }}" class="btn btn-outline-primary btn-sm m-1 p-2 fab fa-linkedin btn-profil">
+                            <a href="{{ myData.html_url }}" class="btn btn-outline-primary btn-sm m-1 p-3 fab fa-linkedin btn-profil">
                                 Linkedin</a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                                                                                                                                                Phasellus id suscipit nisi, vitae rutrum nibh. 
-                                                                                                                                                                Pellentesque et blandit elit. Aliquam vulputate massa tortor, rutrum gravida ligula scelerisque a.
-                                                                                                                                                                 Etiam sed consequat libero. Morbi aliquam cursus ex eu pulvinar. Nunc vestibulum tortor eget libero volutpat molestie.
-                                                                                                                                                                  Pellentesque luctus pretium odio, ac tristique purus sagittis a.
-                                                                                                                                                                   Phasellus nec magna volutpat, consectetur ipsum non, condimentum magna. 
-                                                                                                                                                                   Nunc scelerisque rutrum massa, sed commodo arcu porttitor at. Aenean pellentesque posuere orci, quis dapibus orci.
-                                                                                                                                                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                                                                                                                                                Phasellus id suscipit nisi, vitae rutrum nibh. 
-                                                                                                                                                                Pellentesque et blandit elit. Aliquam vulputate massa tortor, rutrum gravida ligula scelerisque a.
-                                                                                                                                                                 Etiam sed consequat libero. Morbi aliquam cursus ex eu pulvinar. Nunc vestibulum tortor eget libero volutpat molestie.
-                                                                                                                                                                  Pellentesque luctus pretium odio, ac tristique purus sagittis a.
-                                                                                                                                                                   Phasellus nec magna volutpat, consectetur ipsum non, condimentum magna. 
-                                                                                                                                                                   Nunc scelerisque rutrum massa, sed commodo arcu porttitor at. Aenean pellentesque posuere orci, quis dapibus orci.
-                        </p>
                     </div>
+                </div>
+                <div class="col-sm-9">
+                    {{ description|raw }}
+                    <!-- TO DO ADD PROGRESS BAR -->
                 </div>
             </div>
         </div>
     </section>
+
 {% endblock %}

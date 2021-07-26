@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CompetenceRepository;
-use App\Repository\GithubRepository;
+use App\Repository\InformationRepository;
 use App\Repository\ProjetRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(CompetenceRepository $competenceRepository, ProjetRepository $projetRepository): Response
+    public function index(CompetenceRepository $competenceRepository, ProjetRepository $projetRepository, InformationRepository $informationRepository): Response
     {
         $myData = [
             "avatar_url" => 'test',
@@ -25,11 +25,11 @@ class HomeController extends AbstractController
             "public_gists" => '11',
             "name" => 'Tennessee Houry'
         ];
-        $allRepo = [ ];
+        $allRepo = [];
         $client = HttpClient::create();
         $username = 'RedPandore';
 
-       $url = 'https://api.github.com/users/' . $username;
+        /* $url = 'https://api.github.com/users/' . $username;
         $response = $client->request(
             'GET',
             $url,
@@ -47,13 +47,26 @@ class HomeController extends AbstractController
             [],
             ['HTTP_ACCEPT' => 'application/vnd.github.v3+json']
         );
-        $allRepo = json_decode($response->getContent(), true);
+        $allRepo = json_decode($response->getContent(), true);*/
 
         $allCompetences = $competenceRepository->findAll();
 
+        //get all information entity
+        $information = $informationRepository->findAll();
+
+        // tri $information en fonction de leur dernier mise à jour
+        usort($information, function ($a, $b) {
+            return strcmp($b->getUpdatedAt()->format('Y-m-d H:i:s'), $a->getUpdatedAt()->format('Y-m-d H:i:s'));
+        });
+
+        // recupere le nom de curriculum
+        $description = $information[0]->getDescription();
+
         $allProjet = $projetRepository->findAll();
+
         return $this->render('home/index.html.twig', [
             'username' => $username,
+            'description' => $description,
             'myData' => $myData,
             'competences' => $allCompetences,
             'projets' => $allProjet,

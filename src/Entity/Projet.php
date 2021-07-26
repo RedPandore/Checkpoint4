@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+use DateTime;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProjetRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Repository\ProjetRepository;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
@@ -61,6 +62,12 @@ class Projet
      * @ORM\Column(type="string", length=255)
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -132,8 +139,41 @@ class Projet
         return $this->imageFile;
     }
 
-    public function setImageFile(?File $imageFile = null): void
+
+    /**
+     * @param File|null $imageFile
+     * @return $this
+     */
+    public function setImageFile(?File $imageFile = null): self
     {
         $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            $this->updatedAt = new DateTime();
+        }
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  \DateTime  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

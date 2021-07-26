@@ -1,0 +1,21 @@
+@import 'variables';
+
+.box-projet {
+    max-height: 195px;
+    max-width: 387px;
+    border: $border;
+}
+
+.nom-projet {
+    background-color: black;
+    max-width: 387px;
+    font-family: $title-font;
+}
+
+.figcaption {
+    background-color: black;
+}
+
+.figure {
+    background-color: black;
+}
